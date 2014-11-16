@@ -3485,7 +3485,7 @@ $.extend(freeboard, jQuery.eventEmitter);
 
 			$(displayElement)
 				.append($('<div class="tw-tr"></div>').append(titleElement))
-				.append($('<div class="tw-tr"></div>').append($('<div class="tw-value-wrapper tw-td"></div>').append(valueElement).append(unitsElement)))
+				.append($('<div class="tw-tr"></div>').append($('<div class="tw-value-wrapper tw-td"'+(currentSettings.center?' style="text-align:center"':'')+'></div>').append(valueElement).append(unitsElement)))
 				.append($('<div class="tw-tr"></div>').append(sparklineElement));
 
 			$(element).append(displayElement);
@@ -3617,6 +3617,11 @@ $.extend(freeboard, jQuery.eventEmitter);
                 name: "value",
                 display_name: "Value",
                 type: "calculated"
+            },
+            {
+                name: "center",
+                display_name: "Center text",
+                type: "boolean"
             },
             {
                 name: "sparkline",

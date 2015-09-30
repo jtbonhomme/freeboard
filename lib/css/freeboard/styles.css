@@ -404,17 +404,22 @@ table {
 /* ==========
 freeboard
 ============*/
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,200,800|Montserrat:400,700");
 
 html {
 	background-color: #101214;
+        background: linear-gradient(to bottom, #1e2430 0%, #253444 100%);
+        color: #eedba5;
+        width: 100%;
 	height: 100%;
 	overflow: hidden;
 }
 
 body {
 	background-color: #101214;
+	background: #1e2430;
+	font: normal normal 400 1.6vmin/3vmin "Raleway", sans-serif;
 	color: #8b8b8b;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	line-height: 20px;
 	height: 100%;
@@ -639,7 +644,7 @@ h4,
 h5,
 h6 {
 	margin: 10px 0;
-	font-family: inherit;
+        font-family: "Montserrat", sans-serif;
 	font-weight: bold;
 	line-height: 20px;
 	color: inherit;
@@ -761,12 +766,26 @@ a:focus {
 }
 
 .gridster header {
-	background-color: #272727;
+	font: normal normal 400 1.6vmin "Montserrat", sans-serif;
+	color: #eedba5;
+        overflow: hidden;
+	background-color: #323f53;
+	box-shadow: 0 1px 0 #495b71 inset;
 	height: 30px;
 	margin: 0;
 	padding: 0 10px 0 10px;
-	color: #8b8b8b;
+	color: #eedba5;
 	text-transform: uppercase;
+	border-radius: 2px 2px 0 0;
+	border-bottom: 1px solid #253246;
+}
+
+header .fa {
+  font-size: 3vmin;
+  position: absolute;
+  top: 1.5vmin;
+  right: 15px;
+  color: #e0c671;
 }
 
 header h1 {
@@ -781,6 +800,8 @@ header h1 {
 
 .gridster section {
 	line-height: normal;
+	color: #eedba5;
+	background: #2b3847;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -916,9 +937,10 @@ header h1 {
 
 .sub-section {
 	padding: 0;
-	border-bottom: solid 1px #363636;
+	border-bottom: solid 1px #212b37;
 	position: relative;
 	overflow: hidden;
+	border-radius: 0 0 2px 2px;
 }
 
 .sub-section-height-1 {
@@ -1020,7 +1042,8 @@ ul, ol {
 }
 
 .gridster .gs_w {
-	background: #2a2a2a;
+	background: ##2b3847;
+	border-radius: 2px;
 	padding: 0px;
 	margin: 0px;
 	overflow: hidden;
@@ -2349,3 +2372,11 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 	height: 100% !important;
 }
 
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

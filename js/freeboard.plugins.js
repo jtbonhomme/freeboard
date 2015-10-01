@@ -581,7 +581,7 @@
 
 	freeboard.addStyle('.tw-display', 'width: 100%; height:100%; display:table; table-layout:fixed;');
 
-	freeboard.addStyle('.tw-tr',
+	freeboard.addStyle('.tw-tr-header',
 		'display:table-row;');
 
 	freeboard.addStyle('.tw-tg',
@@ -591,7 +591,7 @@
 		'display:table-caption;');
 
 	freeboard.addStyle('.tw-td',
-		'display:table-cell;');
+		'display:table-cell;width: 90%');
 
 	freeboard.addStyle('.tw-value',
 		valueStyle +
@@ -617,11 +617,11 @@
 
         var self = this;
 
-        var currentSettings = settings;
-		var displayElement = $('<div class="tw-display"></div>');
-		var titleElement = $('<h2 class="section-title tw-title tw-td"></h2>');
-        var valueElement = $('<div class="tw-value"></div>');
-        var unitsElement = $('<div class="tw-unit"></div>');
+        var currentSettings  = settings;
+		var displayElement   = $('<div class="tw-display"></div>');
+		var titleElement     = $('<h2 class="section-title tw-title tw-td"></h2>');
+        var valueElement     = $('<div class="tw-value"></div>');
+        var unitsElement     = $('<div class="tw-unit"></div>');
         var sparklineElement = $('<div class="tw-sparkline tw-td"></div>');
 
 		function updateValueSizing()
@@ -639,10 +639,18 @@
         this.render = function (element) {
 			$(element).empty();
 
-			$(displayElement)
-				.append($('<div class="tw-tr"></div>').append(titleElement))
-				.append($('<div class="tw-tr"></div>').append($('<div class="tw-value-wrapper tw-td"'+(currentSettings.center?' style="text-align:center"':'')+'></div>').append(valueElement).append(unitsElement)))
-				.append($('<div class="tw-tr"></div>').append(sparklineElement));
+            if(!_.isUndefined(currentSettings.icon)){
+                $(displayElement)
+                    .append($('<div class="tw-tr-header"></div>').append($('<h2 class="fa '+currentSettings.icon+'"></h2>')).append(titleElement))
+                    .append($('<div class="tw-tr-value"></div>').append($('<div class="tw-value-wrapper tw-td"'+(currentSettings.center?' style="text-align:center"':'')+'></div>').append(valueElement).append(unitsElement)))
+                    .append($('<div class="tw-tr-line"></div>').append(sparklineElement));
+            }
+            else {
+                $(displayElement)
+                    .append($('<div class="tw-tr-header"></div>').append(titleElement))
+                    .append($('<div class="tw-tr-value"></div>').append($('<div class="tw-value-wrapper tw-td"'+(currentSettings.center?' style="text-align:center"':'')+'></div>').append(valueElement).append(unitsElement)))
+                    .append($('<div class="tw-tr-line"></div>').append(sparklineElement));
+            }
 
 			$(element).append(displayElement);
 
@@ -752,6 +760,11 @@
             {
                 name: "title",
                 display_name: "Title",
+                type: "text"
+            },
+            {
+                name: "icon",
+                display_name: "Icon name",
                 type: "text"
             },
             {
